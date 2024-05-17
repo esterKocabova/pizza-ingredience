@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
 import Check from '../Check/Check';
 import ITopping from '../../models/Topping';
 import './Topping.css';
 
 interface IToppingProps {
   topping: ITopping;
+  checked: boolean;
+  onCheckedChange: (value: boolean) => void;
 }
 
-const Topping : React.FC<IToppingProps> = ({ topping }) => {
-  const [checked, setChecked] = useState<boolean>(false);
+const Topping : React.FC<IToppingProps> = ({ topping, checked, onCheckedChange }) => {
 
   return (
     <div className="topping">
-      <Check checked={checked} onChange={setChecked} />
+      <Check checked={checked} onChange={onCheckedChange} />
       <span className="topping__content">
         {topping.name}: {topping.price} €
       </span>
