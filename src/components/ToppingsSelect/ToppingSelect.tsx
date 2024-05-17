@@ -18,11 +18,15 @@ const ToppingsSelect: React.FC<IToppingsSelectProps> = ({ toppings }) => {
   }
 
   const countSelected = toppingsItem.filter(topping => topping.selected).length;
+  const selectedToppings = toppingsItem.filter(topping => topping.selected);
+
+  let toppingsTotalPrice = 0;
+  selectedToppings.forEach((product) => toppingsTotalPrice += product.price);
 
   return (
     <>
       <p>Choose as many toppings as you want</p>
-      <p>Selected toppings: {countSelected}, total price: 0 Euro</p>
+      <p>Selected toppings: {countSelected}, total price: {toppingsTotalPrice} Euro</p>
 
       <div className="toppings">
         {toppings.map((topping, index: number) => (
