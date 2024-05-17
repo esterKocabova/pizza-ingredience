@@ -17,10 +17,12 @@ const ToppingsSelect: React.FC<IToppingsSelectProps> = ({ toppings }) => {
     setToppingsItem(newTopping);
   }
 
+  const countSelected = toppingsItem.filter(topping => topping.selected).length;
+
   return (
     <>
       <p>Choose as many toppings as you want</p>
-      <p>Selected toppings: 0, total price: 0 Euro</p>
+      <p>Selected toppings: {countSelected}, total price: 0 Euro</p>
 
       <div className="toppings">
         {toppings.map((topping, index: number) => (
